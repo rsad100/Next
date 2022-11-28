@@ -3,6 +3,7 @@ import styles from "../styles/SignUp.module.css";
 import Image from "next/image";
 import Axios from "axios";
 import Swal from "sweetalert2";
+import Link from "next/link";
 
 import mail from "../assets/mail.png";
 import lock from "../assets/lock.png";
@@ -19,6 +20,7 @@ class Signup extends Component {
       last: undefined,
       email: undefined,
       password: undefined,
+      hidden: "password",
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -128,13 +130,25 @@ class Signup extends Component {
                 <Image src={mail} alt="img" />
                 <input
                   className={styles["input-1"]}
-                  type="text"
+                  type={this.state.hidden}
                   placeholder="Create your password"
                   value={this.state.password}
                   onChange={(event) => this.handleChange(event, "password")}
                 />
               </div>
-              <Image src={eye} alt="img" />
+              <Image
+                onClick={() => {
+                  this.state.hidden === "password"
+                    ? this.setState({
+                        hidden: "text",
+                      })
+                    : this.setState({
+                        hidden: "password",
+                      });
+                }}
+                src={eye}
+                alt="img"
+              />
             </div>
             <form onSubmit={this.handleSubmit}>
               <button type="submit" className={styles["login-btn"]}>
@@ -145,7 +159,9 @@ class Signup extends Component {
               <p className={styles["aside-right-text-2"]}>
                 Already have an account? Let’s
               </p>
-              <p className={styles["aside-right-text-3"]}>Login</p>
+              <Link href="/login" className={styles["aside-right-text-3"]}>
+                Login
+              </Link>
             </div>
           </aside>
         </main>

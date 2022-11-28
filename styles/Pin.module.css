@@ -183,3 +183,6 @@
   justify-content: center;
   column-gap: 4px;
 }
+
+@media (max-width: 768px) {
+}

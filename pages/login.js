@@ -156,12 +156,14 @@ class Login extends Component {
                 Login
               </button>
             </form>
-            <div className={styles["aside-right-text-div-1"]}>
-              <p className={styles["aside-right-text-2"]}>
-                Don’t have an account? Let’s
+            <Link href="/signup" className={styles["aside-right-text-div-1"]}>
+              <p>
+                <span className={styles["aside-right-text-2"]}>
+                  Don’t have an account? Let’s{" "}
+                </span>
+                <span className={styles["aside-right-text-3"]}> Sign Up</span>
               </p>
-              <p className={styles["aside-right-text-3"]}>Sign Up</p>
-            </div>
+            </Link>
           </aside>
         </main>
       </Fragment>

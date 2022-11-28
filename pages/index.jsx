@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from "react";
 import styles from "../styles/Index.module.css";
 import Image from "next/image";
+import Link from "next/link";
 
 import landing1 from "../assets/landing1.png";
 import landing2 from "../assets/landing2.png";
@@ -27,18 +28,26 @@ class home extends Component {
           <section className={styles["section-1"]}>
             <div className={styles["section-1-div-1"]}>
               <h1 className={styles["section-1-header-1"]}>FazzPay</h1>
-              <div>
-                <button className={styles["login-btn"]}>Login</button>
-                <button className={styles["signup-btn"]}>Sign Up</button>
+              <div className={styles["section-1-div-2"]}>
+                <Link href="/login">
+                  <button className={styles["login-btn"]}>Login</button>
+                </Link>
+                <Link href="/signup">
+                  <button className={styles["signup-btn"]}>Sign Up</button>
+                </Link>
               </div>
             </div>
             <div className={styles["section-1-aside-div"]}>
               <aside>
-                <Image src={landing1} alt="img" />
+                <Image
+                  className={styles["landing1"]}
+                  src={landing1}
+                  alt="img"
+                />
               </aside>
               <aside className={styles["section-1-aside-right"]}>
                 <div className={styles["section-1-header-div"]}>
-                  <h1>
+                  <h1 className={styles["section-1-header-4"]}>
                     <span className={styles["section-1-header-2"]}>
                       Awesome App For Saving{" "}
                     </span>
@@ -96,7 +105,7 @@ class home extends Component {
                   src={lock2}
                   alt="img"
                 />
-                <h1 className={styles["section-3-text-2"]}>24/7 Support</h1>
+                <h1 className={styles["section-3-text-2"]}>Data Privacy</h1>
                 <p className={styles["section-3-text-3"]}>
                   We make sure your data is safe in our database and we will
                   encrypt any data you submitted to us.
@@ -108,7 +117,7 @@ class home extends Component {
                   src={download}
                   alt="img"
                 />
-                <h1 className={styles["section-3-text-2"]}>24/7 Support</h1>
+                <h1 className={styles["section-3-text-2"]}>Easy Download</h1>
                 <p className={styles["section-3-text-3"]}>
                   Zwallet is 100% totally free to use it’s now available on
                   Google Play Store and App Store.
@@ -118,7 +127,7 @@ class home extends Component {
           </section>
           <section className={styles["section-4"]}>
             <aside>
-              <Image src={landing2} alt="img" />
+              <Image className={styles["landing2"]} src={landing2} alt="img" />
             </aside>
             <aside className={styles["section-4-aside-right"]}>
               <h1 className={styles["section-4-header-div"]}>

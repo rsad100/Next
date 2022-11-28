@@ -25,6 +25,9 @@ class password extends Component {
       oldpass: undefined,
       newpass: undefined,
       confirmpass: undefined,
+      oldhidden: "password",
+      newhidden: "password",
+      repeathidden: "password",
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -100,33 +103,57 @@ class password extends Component {
                     <Image src={lock} alt="img" />
                     <input
                       className={styles["input"]}
-                      type="password"
+                      type={this.state.oldhidden}
                       placeholder="Current password"
                       value={this.state.oldpass}
                       onChange={(event) => this.handleChange(event, "oldpass")}
                     />
                   </div>
-                  <Image src={eye} alt="img" />
+                  <Image
+                    onClick={() => {
+                      this.state.oldhidden === "password"
+                        ? this.setState({
+                            oldhidden: "text",
+                          })
+                        : this.setState({
+                            oldhidden: "password",
+                          });
+                    }}
+                    src={eye}
+                    alt="img"
+                  />
                 </div>
                 <div className={styles["input-div"]}>
                   <div className={styles["lock-div"]}>
                     <Image src={lock} alt="img" />
                     <input
                       className={styles["input"]}
-                      type="password"
+                      type={this.state.newhidden}
                       placeholder="New password"
                       value={this.state.newpass}
                       onChange={(event) => this.handleChange(event, "newpass")}
                     />
                   </div>
-                  <Image src={eye} alt="img" />
+                  <Image
+                    onClick={() => {
+                      this.state.newhidden === "password"
+                        ? this.setState({
+                            newhidden: "text",
+                          })
+                        : this.setState({
+                            newhidden: "password",
+                          });
+                    }}
+                    src={eye}
+                    alt="img"
+                  />
                 </div>
                 <div className={styles["input-div"]}>
                   <div className={styles["lock-div"]}>
                     <Image src={lock} alt="img" />
                     <input
                       className={styles["input"]}
-                      type="password"
+                      type={this.state.repeathidden}
                       placeholder="Repeat new password"
                       value={this.state.confirmpass}
                       onChange={(event) =>
@@ -134,7 +161,19 @@ class password extends Component {
                       }
                     />
                   </div>
-                  <Image src={eye} alt="img" />
+                  <Image
+                    onClick={() => {
+                      this.state.repeathidden === "password"
+                        ? this.setState({
+                            repeathidden: "text",
+                          })
+                        : this.setState({
+                            repeathidden: "password",
+                          });
+                    }}
+                    src={eye}
+                    alt="img"
+                  />
                 </div>
               </div>
               <form onSubmit={this.handleSubmit} className={styles["btn-div"]}>

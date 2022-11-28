@@ -91,6 +91,7 @@
   border-bottom: 1.5px solid rgba(169, 169, 169, 0.6);
   margin-bottom: 51px;
 }
+
 .input-4-div {
   padding-bottom: 11px;
   display: flex;
@@ -158,4 +159,24 @@
   display: flex;
   justify-content: center;
   column-gap: 4px;
+}
+
+@media (max-width: 768px) {
+  .aside-left {
+    position: relative;
+    background-color: #6379f4;
+    padding-left: 115px;
+    padding-right: 159px;
+    padding-bottom: 70px;
+    padding-top: 50px;
+    display: none;
+  }
+
+  .aside-right {
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 121px;
+    padding-bottom: 51px;
+    background-color: white;
+  }
 }

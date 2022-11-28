@@ -23,3 +23,17 @@
   line-height: 28px;
   color: #efefef;
 }
+
+@media (max-width: 768px) {
+  .main {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    row-gap: 10px;
+    background-color: rgba(99, 121, 244, 1);
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+}

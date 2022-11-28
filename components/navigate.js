@@ -61,17 +61,17 @@ class Navigate extends Component {
     // const url = `https://fazzpay-rose.vercel.app/auth/logout`;
     this.props.dispatch(
       authAction.logoutThunk(() => {
+        localStorage.removeItem("token", this.props.auth.userData.token);
+        localStorage.removeItem("id", this.props.auth.userData.id);
+        localStorage.removeItem("pin", this.props.auth.userData.pin);
+        window.location.href = "/login";
         Swal.fire({
           title: "Logout Success",
           timer: 2000,
           showConfirmButton: false,
           // timerProgressBar: true,
         }).then((result) => {
-          localStorage.removeItem("token", this.props.auth.userData.token);
-          localStorage.removeItem("id", this.props.auth.userData.id);
-          localStorage.removeItem("pin", this.props.auth.userData.pin);
           if (result.dismiss === Swal.DismissReason.timer) {
-            window.location.href = "/login";
           }
         });
       })
@@ -155,8 +155,17 @@ class Navigate extends Component {
               <Image src={this.props.image4} alt="img" />
               <p>Profile</p>
             </Link>
+            <form
+              className={styles["logout-div-2"]}
+              onSubmit={this.handleSubmit}
+            >
+              <button type="submit" className={styles["aside-left-div-2"]}>
+                <Image src={logout} alt="img" />
+                <p>Logout</p>
+              </button>
+            </form>
           </div>
-          <form onSubmit={this.handleSubmit}>
+          <form className={styles["logout-div"]} onSubmit={this.handleSubmit}>
             <button type="submit" className={styles["aside-left-div-2"]}>
               <Image src={logout} alt="img" />
               <p>Logout</p>

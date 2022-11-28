@@ -4,6 +4,7 @@ import Image from "next/image";
 import Axios from "axios";
 import Swal from "sweetalert2";
 import jwt from "jwt-decode";
+import Link from "next/link";
 
 import bell from "../assets/bell.png";
 import def from "../assets/default.jpg";
@@ -51,8 +52,10 @@ class header extends Component {
   render() {
     return (
       <section className={styles["main"]}>
-        <h1 className={styles["content-left"]}>FazzPay</h1>
-        <div className={styles["profile-div"]}>
+        <Link href="/home" className={styles["content-left"]}>
+          FazzPay
+        </Link>
+        <Link href="/profile" className={styles["profile-div"]}>
           {this.state.image === null ? (
             <Image
               width={52}
@@ -79,7 +82,7 @@ class header extends Component {
             <p className={styles["profile-text-2"]}>{this.state.phone}</p>
           </div>
           <Image src={bell} alt="bell" />
-        </div>
+        </Link>
       </section>
     );
   }

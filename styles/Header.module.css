@@ -46,3 +46,18 @@
   flex-direction: column;
   margin-right: 33px;
 }
+
+@media (max-width: 768px) {
+  .main {
+    background-color: rgba(255, 255, 255, 1);
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 30px;
+    width: 100%;
+    justify-content: center;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 42px;
+    padding-bottom: 43px;
+  }
+}

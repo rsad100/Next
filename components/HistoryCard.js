@@ -39,7 +39,7 @@ class HistoryCard extends Component {
               </p>
             </div>
           </div>
-          {this.props.type === "accept" ? (
+          {this.props.type === "accept" || this.props.type === "topup" ? (
             <p className={styles["section-2-aside-right-text-3"]}>
               +
               <NumericFormat

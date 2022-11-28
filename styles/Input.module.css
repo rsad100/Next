@@ -176,3 +176,35 @@
   line-height: 25px;
   color: #ffffff;
 }
+
+@media (max-width: 768px) {
+  .section-main {
+    background-color: rgba(250, 252, 255, 1);
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 40px;
+    padding-bottom: 35px;
+  }
+
+  .edit-div {
+    width: 100%;
+    display: flex;
+    column-gap: 15px;
+    align-items: center;
+    padding-bottom: 13px;
+    border-bottom: 1.5px solid #6379f4;
+    margin-bottom: 84px;
+  }
+
+  .aside-right-text-3 {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 28px;
+    color: #7a7886;
+    width: 100%;
+    margin-bottom: 65px;
+  }
+}

@@ -136,7 +136,25 @@
 }
 
 .aside-right-text-div-1 {
-  display: flex;
-  justify-content: center;
-  column-gap: 4px;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .aside-left {
+    position: relative;
+    background-color: #6379f4;
+    padding-left: 115px;
+    padding-right: 159px;
+    padding-bottom: 70px;
+    padding-top: 50px;
+    display: none;
+  }
+
+  .aside-right {
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 121px;
+    padding-bottom: 146px;
+    background-color: white;
+  }
 }

@@ -170,7 +170,7 @@ class home extends Component {
                     </div>
                   </div>
                   <div className={styles["table"]}>
-                    <Image src={table} alt="img" />
+                    <Image className={styles["table"]} src={table} alt="img" />
                   </div>
                 </aside>
                 <aside className={styles["section-2-aside-right"]}>
@@ -181,7 +181,7 @@ class home extends Component {
                     {this.state.history.map((history) => {
                       return (
                         <HistoryCard
-                          firstname={history.firstName}
+                          firstName={history.firstName}
                           lastName={history.lastName}
                           image={history.image}
                           id={history.id}

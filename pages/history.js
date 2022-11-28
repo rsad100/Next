@@ -38,15 +38,16 @@ class history extends Component {
       display: "none",
       page: 1,
       limit: 4,
+      filter: "WEEK",
     };
   }
 
   componentDidMount() {
-    document.title = "Dashboard";
+    document.title = "History";
     const config = {
       headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
     };
-    const url = `https://fazzpay-rose.vercel.app/transaction/history?page=${this.state.page}&limit=${this.state.limit}&filter=MONTH`;
+    const url = `${process.env.NEXT_PUBLIC_BACKEND_HOST}/transaction/history?page=${this.state.page}&limit=${this.state.limit}&filter=${this.state.filter}`;
 
     Axios.get(url, config)
       .then((res) => {
@@ -78,15 +79,100 @@ class history extends Component {
                 <h1 className={styles["aside-right-header-1"]}>
                   Transaction History
                 </h1>
-                <div className={styles["aside-right-filter"]}>
-                  -- Select Filter --
+                <div className={styles["dropdown"]}>
+                  <button className={styles["dropdown"]}>
+                    {this.state.filter}
+                  </button>
+                  <div className={styles["dropdown-content"]}>
+                    <a
+                      onClick={() => {
+                        const newfilter = "WEEK";
+                        const config = {
+                          headers: {
+                            Authorization: `Bearer ${localStorage.getItem(
+                              "token"
+                            )}`,
+                          },
+                        };
+                        const url3 = `https://fazzpay-rose.vercel.app/transaction/history?page=${this.state.page}&limit=${this.state.limit}&filter=${newfilter}`;
+                        Axios.get(url3, config)
+                          .then((res) => {
+                            console.log(res.data.data);
+                            this.setState({ history: res.data.data });
+                            // console.log(res.data.data);
+                          })
+                          .catch((err) => console.log(err));
+                        this.setState({
+                          filter: newfilter,
+                        });
+                      }}
+                      href="#"
+                    >
+                      Week
+                    </a>
+                    <a
+                      onClick={() => {
+                        const newfilter = "MONTH";
+                        const config = {
+                          headers: {
+                            Authorization: `Bearer ${localStorage.getItem(
+                              "token"
+                            )}`,
+                          },
+                        };
+                        const url3 = `https://fazzpay-rose.vercel.app/transaction/history?page=${this.state.page}&limit=${this.state.limit}&filter=${newfilter}`;
+                        Axios.get(url3, config)
+                          .then((res) => {
+                            console.log(res.data.data);
+                            this.setState({ history: res.data.data });
+                            // console.log(res.data.data);
+                          })
+                          .catch((err) => console.log(err));
+                        this.setState({
+                          filter: newfilter,
+                        });
+                      }}
+                      href="#"
+                    >
+                      Month
+                    </a>
+                    <a
+                      onClick={() => {
+                        const newfilter = "YEAR";
+                        const config = {
+                          headers: {
+                            Authorization: `Bearer ${localStorage.getItem(
+                              "token"
+                            )}`,
+                          },
+                        };
+                        const url3 = `https://fazzpay-rose.vercel.app/transaction/history?page=${this.state.page}&limit=${this.state.limit}&filter=${newfilter}`;
+                        Axios.get(url3, config)
+                          .then((res) => {
+                            console.log(res.data.data);
+                            this.setState({ history: res.data.data });
+                            // console.log(res.data.data);
+                          })
+                          .catch((err) => console.log(err));
+                        this.setState({
+                          filter: newfilter,
+                        });
+                      }}
+                      href="#"
+                    >
+                      Year
+                    </a>
+                  </div>
                 </div>
+                {/* <div className={styles["aside-right-filter"]}>
+                  -- Select Filter --
+                </div> */}
               </div>
               <div className={styles["history-div"]}>
                 {this.state.history.map((history) => {
                   return (
                     <HistoryCard2
-                      firstname={history.firstName}
+                      firstName={history.firstName}
                       lastName={history.lastName}
                       image={history.image}
                       id={history.id}
