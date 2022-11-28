@@ -1,0 +1,48 @@
+.main {
+  background-color: rgba(255, 255, 255, 1);
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  padding-left: 150px;
+  padding-right: 150px;
+  padding-top: 42px;
+  padding-bottom: 43px;
+}
+
+.content-left {
+  font-weight: 700;
+  font-size: 29px;
+  line-height: 40px;
+  color: #6379f4;
+}
+
+.profile-div {
+  display: flex;
+  align-items: center;
+}
+
+.profile-text-1 {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 31px;
+  color: #3a3d42;
+}
+
+.profile-text-2 {
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 24px;
+  color: rgba(58, 61, 66, 0.9);
+}
+
+.profile-image {
+  margin-right: 20px;
+  width: 52px;
+  height: 52px;
+}
+
+.profile-text-div {
+  display: flex;
+  flex-direction: column;
+  margin-right: 33px;
+}

@@ -11,8 +11,27 @@ a {
   text-decoration: none;
 }
 
-* {
+main {
+  max-width: 1440px;
+  margin: auto;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0px;
+  padding: 0px;
   box-sizing: border-box;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -21,6 +40,6 @@ a {
   }
   body {
     color: white;
-    background: black;
+    background: #bcbaba;
   }
 }

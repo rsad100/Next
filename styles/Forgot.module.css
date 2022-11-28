@@ -1,0 +1,133 @@
+.main {
+  display: flex;
+}
+
+.aside-left {
+  position: relative;
+  background-color: #6379f4;
+  padding-left: 115px;
+  padding-right: 159px;
+  padding-bottom: 70px;
+  padding-top: 50px;
+}
+
+.wave {
+  margin-top: 50px;
+  width: 100%;
+  left: 0%;
+  position: absolute;
+  opacity: 0.6;
+}
+
+.aside-left-header-1 {
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 29px;
+  line-height: 40px;
+  margin-bottom: 41.83px;
+}
+
+.aside-left-header-2 {
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 33px;
+  margin-bottom: 30px;
+}
+
+.aside-left-text-1 {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 23px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.aside-right {
+  padding-left: 50px;
+  padding-right: 150px;
+  padding-top: 121px;
+  padding-bottom: 51px;
+  background-color: white;
+}
+
+.aside-right-header-1 {
+  color: #3a3d42;
+  margin-bottom: 30px;
+}
+
+.aside-right-text-1 {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 30px;
+  color: rgba(58, 61, 66, 0.6);
+  margin-bottom: 63px;
+}
+
+.input-3-div {
+  padding-bottom: 11px;
+  display: flex;
+  justify-content: space-between;
+  column-gap: 19px;
+  width: 100%;
+  border-bottom: 1.5px solid rgba(169, 169, 169, 0.6);
+  margin-bottom: 90px;
+}
+
+.input-2-subdiv {
+  display: flex;
+  column-gap: 15px;
+}
+
+.input-1 {
+  width: 100%;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 23px;
+  color: rgba(169, 169, 169, 0.8);
+  background-color: transparent;
+  border: none;
+}
+
+.forgot {
+  text-align: right;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 24px;
+  color: rgba(58, 61, 66, 0.8);
+  margin-bottom: 90px;
+}
+
+.login-btn {
+  width: 100%;
+  height: 57px;
+  background: #dadada;
+  box-shadow: 0px 6px 75px rgba(100, 87, 87, 0.05);
+  border-radius: 12px;
+  border: none;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 25px;
+  color: #88888f;
+  margin-bottom: 40px;
+  cursor: pointer;
+}
+
+.aside-right-text-2 {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 23px;
+  color: rgba(58, 61, 66, 0.8);
+}
+
+.aside-right-text-3 {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 26px;
+  color: rgba(99, 121, 244, 1);
+}
+
+.aside-right-text-div-1 {
+  display: flex;
+  justify-content: center;
+  column-gap: 4px;
+}
