@@ -78,7 +78,11 @@ class Login extends Component {
           timerProgressBar: true,
         }).then((result) => {
           if (result.dismiss === Swal.DismissReason.timer) {
-            window.location.href = "/home";
+            if (this.props.auth.userData.pin === null) {
+              window.location.href = "/pin";
+            } else {
+              window.location.href = "/home";
+            }
           }
         });
       }
