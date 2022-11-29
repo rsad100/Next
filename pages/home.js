@@ -7,6 +7,7 @@ import { NumericFormat } from "react-number-format";
 import Link from "next/link";
 
 import withAuth from "../helpers/withAuth";
+import withSearchParams from "../helpers/withSearchParams";
 
 import Header from "../components/header";
 import Footer from "../components/footer";
@@ -56,6 +57,13 @@ class home extends Component {
       "id"
     )}`;
     const url3 = `https://fazzpay-rose.vercel.app/transaction/history?page=${this.state.page}&limit=${this.state.limit}&filter=MONTH`;
+    this.props.router.push({
+      pathname: "/home",
+      query: {
+        page: this.state.page,
+        limit: this.state.limit,
+      },
+    });
     Axios.get(url, config)
       .then((res) => {
         this.setState({
@@ -213,6 +221,13 @@ class home extends Component {
                         this.setState({
                           page: newpage,
                         });
+                        this.props.router.push({
+                          pathname: "/home",
+                          query: {
+                            page: newpage,
+                            limit: this.state.limit,
+                          },
+                        });
                       }}
                       className={styles["nav-left"]}
                     >
@@ -238,6 +253,13 @@ class home extends Component {
                           .catch((err) => console.log(err));
                         this.setState({
                           page: newpage,
+                        });
+                        this.props.router.push({
+                          pathname: "/home",
+                          query: {
+                            page: newpage,
+                            limit: this.state.limit,
+                          },
                         });
                       }}
                       className={styles["nav-left"]}
@@ -291,4 +313,4 @@ class home extends Component {
   }
 }
 
-export default withAuth(home);
+export default withSearchParams(withAuth(home));

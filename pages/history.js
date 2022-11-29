@@ -25,6 +25,7 @@ import adobe from "../assets/adobe.png";
 import HistoryCard2 from "../components/HistoryCard2";
 
 import withAuth from "../helpers/withAuth";
+import withSearchParams from "../helpers/withSearchParams";
 
 class history extends Component {
   constructor(props) {
@@ -105,8 +106,15 @@ class history extends Component {
                         this.setState({
                           filter: newfilter,
                         });
+                        this.props.router.push({
+                          pathname: "/history",
+                          query: {
+                            page: this.state.page,
+                            limit: this.state.limit,
+                            filter: newfilter,
+                          },
+                        });
                       }}
-                      href="#"
                     >
                       Week
                     </a>
@@ -131,8 +139,15 @@ class history extends Component {
                         this.setState({
                           filter: newfilter,
                         });
+                        this.props.router.push({
+                          pathname: "/history",
+                          query: {
+                            page: this.state.page,
+                            limit: this.state.limit,
+                            filter: newfilter,
+                          },
+                        });
                       }}
-                      href="#"
                     >
                       Month
                     </a>
@@ -157,8 +172,15 @@ class history extends Component {
                         this.setState({
                           filter: newfilter,
                         });
+                        this.props.router.push({
+                          pathname: "/history",
+                          query: {
+                            page: this.state.page,
+                            limit: this.state.limit,
+                            filter: newfilter,
+                          },
+                        });
                       }}
-                      href="#"
                     >
                       Year
                     </a>
@@ -193,7 +215,7 @@ class history extends Component {
                         )}`,
                       },
                     };
-                    const url3 = `https://fazzpay-rose.vercel.app/transaction/history?page=${newpage}&limit=${this.state.limit}&filter=MONTH`;
+                    const url3 = `https://fazzpay-rose.vercel.app/transaction/history?page=${newpage}&limit=${this.state.limit}&filter=${this.state.filter}`;
                     Axios.get(url3, config)
                       .then((res) => {
                         console.log(res.data.data);
@@ -203,6 +225,14 @@ class history extends Component {
                       .catch((err) => console.log(err));
                     this.setState({
                       page: newpage,
+                    });
+                    this.props.router.push({
+                      pathname: "/history",
+                      query: {
+                        page: newpage,
+                        limit: this.state.limit,
+                        filter: this.state.filter,
+                      },
                     });
                   }}
                   className={styles["nav-btn"]}
@@ -219,7 +249,7 @@ class history extends Component {
                         )}`,
                       },
                     };
-                    const url3 = `https://fazzpay-rose.vercel.app/transaction/history?page=${newpage}&limit=${this.state.limit}&filter=MONTH`;
+                    const url3 = `https://fazzpay-rose.vercel.app/transaction/history?page=${newpage}&limit=${this.state.limit}&filter=${this.state.filter}`;
                     Axios.get(url3, config)
                       .then((res) => {
                         console.log(res.data.data);
@@ -229,6 +259,14 @@ class history extends Component {
                       .catch((err) => console.log(err));
                     this.setState({
                       page: newpage,
+                    });
+                    this.props.router.push({
+                      pathname: "/history",
+                      query: {
+                        page: newpage,
+                        limit: this.state.limit,
+                        filter: this.state.filter,
+                      },
                     });
                   }}
                   className={styles["nav-btn"]}
@@ -245,4 +283,4 @@ class history extends Component {
   }
 }
 
-export default withAuth(history);
+export default withSearchParams(withAuth(history));

@@ -2,7 +2,6 @@ import React, { Component, Fragment } from "react";
 import styles from "../../styles/Search.module.css";
 import Image from "next/image";
 import Axios from "axios";
-import Swal from "sweetalert2";
 
 import Header from "../../components/header";
 import Footer from "../../components/footer";
@@ -13,14 +12,10 @@ import dashboard from "../../assets/dashboardgrey.png";
 import arrowup from "../../assets/arrowupblue.png";
 import plus from "../../assets/plus.svg";
 import user from "../../assets/user.svg";
-import logout from "../../assets/logout.png";
 import search from "../../assets/search.png";
-import profile1 from "../../assets/profile1.png";
-import profile3 from "../../assets/profile3.png";
-import profile4 from "../../assets/profile4.png";
-import profileimg1 from "../../assets/profileimg1.png";
 
 import withAuth from "../../helpers/withAuth";
+import withSearchParams from "../../helpers/withSearchParams";
 
 class Search extends Component {
   constructor(props) {
@@ -29,7 +24,7 @@ class Search extends Component {
       users: [],
       page: 1,
       limit: 4,
-      search: undefined,
+      search: "",
       sort: "firstName ASC",
     };
     this.handleChange = this.handleChange.bind(this);
@@ -40,7 +35,15 @@ class Search extends Component {
   }
 
   componentDidMount() {
-    document.title = "Products";
+    document.title = "Search";
+    this.props.router.push({
+      pathname: "/transfer/search",
+      query: {
+        page: this.state.page,
+        limit: this.state.limit,
+        search: this.state.search,
+      },
+    });
     const config = {
       headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
     };
@@ -91,6 +94,14 @@ class Search extends Component {
                         this.setState({ users: res.data.data });
                       })
                       .catch((err) => console.log(err));
+                    this.props.router.push({
+                      pathname: "/transfer/search",
+                      query: {
+                        page: this.state.page,
+                        limit: this.state.limit,
+                        search: this.state.search,
+                      },
+                    });
                   }}
                   src={search}
                   alt="img"
@@ -118,8 +129,77 @@ class Search extends Component {
                   })}
                 </div>
               </div>
-              <div>{"<"}</div>
-              <div>{">"}</div>
+              <div className={styles["nav-div"]}>
+                <button
+                  onClick={() => {
+                    const newpage = this.state.page - 1;
+                    const config = {
+                      headers: {
+                        Authorization: `Bearer ${localStorage.getItem(
+                          "token"
+                        )}`,
+                      },
+                    };
+                    const url3 = `https://fazzpay-rose.vercel.app/user?page=${newpage}&limit=${this.state.limit}&filter=MONTH`;
+                    Axios.get(url3, config)
+                      .then((res) => {
+                        console.log(res.data.data);
+                        this.setState({ users: res.data.data });
+                        // console.log(res.data.data);
+                      })
+                      .catch((err) => console.log(err));
+                    this.setState({
+                      page: newpage,
+                    });
+                    this.props.router.push({
+                      pathname: "/transfer/search",
+                      query: {
+                        page: newpage,
+                        limit: this.state.limit,
+                        search: this.state.search,
+                      },
+                    });
+                  }}
+                  className={styles["nav-btn"]}
+                >
+                  {"<"}
+                </button>
+                <p className={styles["nav-text"]}>{this.state.page}</p>
+                <button
+                  onClick={() => {
+                    const newpage = this.state.page + 1;
+                    const config = {
+                      headers: {
+                        Authorization: `Bearer ${localStorage.getItem(
+                          "token"
+                        )}`,
+                      },
+                    };
+                    const url = `https://fazzpay-rose.vercel.app/user?page=${newpage}&limit=${this.state.limit}&search=${this.state.search}`;
+                    Axios.get(url, config)
+                      .then((res) => {
+                        console.log(res.data.data);
+                        this.setState({ users: res.data.data });
+                        console.log(res.data.data);
+                      })
+                      .catch((err) => console.log(err));
+                    this.setState({
+                      page: newpage,
+                    });
+                    this.props.router.push({
+                      pathname: "/transfer/search",
+                      query: {
+                        page: newpage,
+                        limit: this.state.limit,
+                        search: this.state.search,
+                      },
+                    });
+                  }}
+                  className={styles["nav-btn"]}
+                >
+                  {">"}
+                </button>
+              </div>
             </aside>
           </section>
           <Footer />
@@ -129,4 +209,4 @@ class Search extends Component {
   }
 }
 
-export default withAuth(Search);
+export default withSearchParams(withAuth(Search));
